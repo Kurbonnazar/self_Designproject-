@@ -1,6 +1,7 @@
 var gameState ="play"
 var score=0
 var bomb,bombImage,bombGroup
+var life=3
 
 function setup() {
   createCanvas(1000,600);
@@ -26,17 +27,17 @@ function coins(){
   }
 }
 function bombs(){
-  if (frameCount % 60===0)
+  if (frameCount % 80===0){
   var bomb=createSprite(500,0,40,10);
-  
+  bomb.x= Math.round(random(80,900));
   bomb.addImage("bombImage",bombImage);
-  bomb.scale= 0.5;
+  bomb.scale= 0.2;
   bomb.velocityY= 3;
 
   bomb.lifetime=200;
   bombGroup.add(bomb)
 }
-
+}
 function draw() {
   
   if (gameState==="play"){
@@ -55,6 +56,7 @@ function draw() {
   textSize(25)
   fill("Black")
   text("Score:"+score, 90,50)
+  text("Life:"+life,90,80)
 }
 }
 
